@@ -7,6 +7,8 @@ import Notification from './components/UI/Notification';
 import { Fragment, useEffect } from 'react';
 import { actions } from './store';
 
+let isInitial = true;
+
 function App() {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.item);
@@ -22,6 +24,7 @@ function App() {
           message: 'Sending cart data!',
         })
       );
+      // erase .json to see the error state!
       const response = await fetch('https://redux-firebase-27caf-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json', {
         method: 'PUT',
         body: JSON.stringify(cart),
@@ -39,6 +42,12 @@ function App() {
       );
       // const responseData = await response.json();
     };
+
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+
     sendCartData().catch((error) => {
       dispatch(
         actions.ui.showNotification({
