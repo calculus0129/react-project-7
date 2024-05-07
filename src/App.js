@@ -3,13 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
-import { useEffect } from 'react';
+import Notification from './components/UI/Notification';
+import { Fragment, useEffect } from 'react';
 import { actions } from './store';
 
 function App() {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.item);
-  const showCart = useSelector(state=>state.ui.showCart);
+  const showCart = useSelector(state => state.ui.showCart);
+  const notification = useSelector(state => state.ui.notification);
 
   useEffect(() => {
     const sendCartData = async () => {
@@ -50,10 +52,19 @@ function App() {
   }, [cart, dispatch]); // to get rid of warnings, include the dispatch in the dependency array, although it is ensured by the react not to be modified.
 
   return (
-    <Layout>
-      {showCart && <Cart />}
-      <Products />
-    </Layout>
+    <Fragment>
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
+      <Layout>
+        {showCart && <Cart />}
+        <Products />
+      </Layout>
+    </Fragment>
   );
 }
 
