@@ -15,6 +15,12 @@ const itemSlice = createSlice({
         totalQuantity: 0, // to display at the badge of cart.
     },
     reducers: {
+        // Added to load the cart from the DB!
+        replaceItem(state, action) {
+            state.items = action.payload.items;
+            state.totalQuantity = action.payload.totalQuantity;
+        },
+        // Or addItemToCart(state, action)
         increment(state, action) {
             // action: {id, title, price} object.
             const newItem = action.payload;

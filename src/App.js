@@ -5,7 +5,7 @@ import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import Notification from './components/UI/Notification';
-import { sendCartData } from './store/ui-slice';
+import { sendCartData, fetchCartData } from './store/item-actions';
 // import { actions } from './store';
 
 let isInitial = true;
@@ -16,8 +16,14 @@ function App() {
   const showCart = useSelector(state => state.ui.showCart);
   const notification = useSelector(state => state.ui.notification);
 
+  // This code changes the 'cart' content, triggering the PUT request once again!
+  useEffect(()=>{
+    dispatch(fetchCartData()); // You need to use fetchCartData(), not the name only!
+  }, [dispatch]); // dispatch is for 'completeness'. Since it is constant, it is guaranteed to be executed only once!!
+
   useEffect(() => {
     if (isInitial) {
+      // dispatch(fetchCartData); // this can alternatively be used to fetch Cart Data only at the beginning.
       isInitial = false;
       return;
     }
