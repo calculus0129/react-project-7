@@ -27,8 +27,9 @@ function App() {
       isInitial = false;
       return;
     }
-
-    dispatch(sendCartData(cart));
+    if(cart.changed) {
+      dispatch(sendCartData(cart));
+    }
     // Component-based async fetch implementation
     
     // const sendCartData = async () => {

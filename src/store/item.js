@@ -13,6 +13,7 @@ const itemSlice = createSlice({
     initialState: {
         items: [],
         totalQuantity: 0, // to display at the badge of cart.
+        changed: false,
     },
     reducers: {
         // Added to load the cart from the DB!
@@ -39,6 +40,7 @@ const itemSlice = createSlice({
                 });
             }
             state.totalQuantity++;
+            state.changed = true;
         },
         decrement(state, action) {
             const id = action.payload;
@@ -57,6 +59,7 @@ const itemSlice = createSlice({
                     items.splice(idx, 1);
                 }
                 state.totalQuantity--;
+                state.changed = true;
             } else {
                 console.log(`INVALID Reducer: Cannot delete un-existing item with id ${action.payload} from the state`);
             }
