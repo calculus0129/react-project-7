@@ -20,6 +20,7 @@ const itemSlice = createSlice({
         replaceItem(state, action) {
             state.items = action.payload.items;
             state.totalQuantity = action.payload.totalQuantity;
+            // changed = false;
         },
         // Or addItemToCart(state, action)
         increment(state, action) {

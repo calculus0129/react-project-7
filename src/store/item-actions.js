@@ -15,7 +15,10 @@ export const fetchCartData = () => {
         };
         try {
             const cartData = await fetchData();
-            dispatch(actions.item.replaceItem(cartData));
+            dispatch(actions.item.replaceItem({
+                items: cartData.items || [], // replace with an empty array [] if undefined.
+                totalQuantity: cartData.totalQuantity, // works without replacement. is undefined == 0? (or === 0?)
+            }));
         } catch (error) {
             dispatch(
                 actions.ui.showNotification({
@@ -42,7 +45,12 @@ export const sendCartData = (cart) => {
             // erase .json to see the error state!
             const response = await fetch('https://redux-firebase-27caf-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json', {
                 method: 'PUT',
-                body: JSON.stringify(cart),
+                // body: JSON.stringify(cart),
+                // Save only necessary informations
+                body: JSON.stringify({
+                    items: cart.items,
+                    totalQuantity: cart.totalQuantity,
+                }),
             });
             if (!response.ok) {
                 throw new Error('Sending cart data failed.');
