@@ -14,15 +14,15 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "React Shop",
-  applicationName: "React Cart",
+  applicationName: "React Shopping Cart",
   description: "Buy your favorite products!",
   icons: [
-    // {
-    //   url: "./favicon.ico",
-    //   rel: "icon",
-    //   sizes: "64x64 32x32 24x24 16x16",
-    //   type: "image/x-icon",
-    // },
+    {
+      url: "./favicon.ico",
+      rel: "icon",
+      sizes: "64x64 32x32 24x24 16x16",
+      type: "image/x-icon",
+    },
     {
       url: "/logo192.png",
       rel: "apple-touch-icon",
