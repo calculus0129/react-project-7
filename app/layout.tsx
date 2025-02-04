@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { Viewport } from "next";
 import "./globals.css";
+import MainHeader from "@/components/MainHeader";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -46,7 +47,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {/* In HTML, <header> cannot be a child of <html>.
+      This will cause a hydration error. */}
+        <MainHeader />
+        {children}
+      </body>
     </html>
   );
 }
