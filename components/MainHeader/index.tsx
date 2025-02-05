@@ -1,3 +1,5 @@
+"use client";
+
 import CartButton from "./CartButton";
 import classes from "./MainHeader.module.css";
 

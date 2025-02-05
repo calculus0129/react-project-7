@@ -2,16 +2,7 @@ import type { Metadata } from "next";
 import type { Viewport } from "next";
 import "./globals.css";
 import MainHeader from "@/components/MainHeader";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import ReduxProvider from "./providers";
 
 export const metadata: Metadata = {
   title: "React Shop",
@@ -47,12 +38,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        {/* In HTML, <header> cannot be a child of <html>.
+      <ReduxProvider>
+        <body>
+          {/* In HTML, <header> cannot be a child of <html>.
       This will cause a hydration error. */}
-        <MainHeader />
-        {children}
-      </body>
+          <MainHeader />
+          {children}
+        </body>
+      </ReduxProvider>
     </html>
   );
 }

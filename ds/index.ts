@@ -1,3 +1,4 @@
+// https://www.npmjs.com/package/uuid#uuidv4options-buffer-offset
 import { v4 as uuidv4 } from "uuid";
 
 export interface Product {
@@ -66,3 +67,10 @@ class ProductImpl implements Product {
 }
 
 export { ProductImpl };
+
+export type CartState = {
+  cart: Record<string, number>; // Acts like a 'typed object'!
+};
+export type UiState = {
+  isCartOpen: boolean;
+};
