@@ -9,7 +9,7 @@ const Products: React.FC = (props) => {
       <h2>Buy your favorite products</h2>
       <ul>
         {[...productMap.values()].map((sampleProduct) => (
-          <ProductItem key={sampleProduct.pid} {...sampleProduct} />
+          <ProductItem key={sampleProduct.pid} pid={sampleProduct.pid} />
         ))}
       </ul>
     </section>

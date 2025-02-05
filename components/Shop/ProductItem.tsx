@@ -1,9 +1,11 @@
 import { Product } from "@/ds";
 import Card from "@/components/UI/Card";
 import classes from "./ProductItem.module.css";
+import { productMap } from "@/db/Products";
 
-const ProductItem: React.FC<Product> = (props) => {
-  const { ptitle, pprice, pdesc } = props;
+const ProductItem: React.FC<{ pid: string }> = (props) => {
+  const { pid } = props;
+  const { ptitle, pprice, pdesc } = productMap.get(pid)!;
 
   return (
     <li className={classes.item}>

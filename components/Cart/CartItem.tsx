@@ -1,12 +1,14 @@
 import classes from "./CartItem.module.css";
 import { Product } from "@/ds";
+import { productMap } from "@/db/Products";
 
 interface CartItemProps {
-  item: Product;
+  itemId: string;
   quantity: number;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ item: product, quantity }) => {
+const CartItem: React.FC<CartItemProps> = ({ itemId, quantity }) => {
+  const product = productMap.get(itemId)!;
   const { ptitle, pprice } = product;
   const total = pprice * quantity;
 

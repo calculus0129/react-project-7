@@ -14,13 +14,7 @@ const Cart: React.FC = (props) => {
       <h2>Your Shopping Cart</h2>
       <ul>
         {Array.from(itemNumber.entries()).map(([pid, quantity]) => {
-          return (
-            <CartItem
-              key={pid}
-              item={productMap.get(pid)!}
-              quantity={quantity}
-            />
-          );
+          return <CartItem key={pid} itemId={pid} quantity={quantity} />;
         })}
       </ul>
     </Card>
