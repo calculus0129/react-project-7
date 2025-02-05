@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { UiState } from "@/ds";
 
 const initialState: UiState = {
-  isCartOpen: false,
+  isCartOpen: true,
 };
 
 const uiSlice = createSlice({

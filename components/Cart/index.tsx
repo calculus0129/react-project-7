@@ -2,18 +2,16 @@ import Card from "@/components/UI/Card";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 import { Product } from "@/ds";
-import { productMap } from "@/db/Products";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
-const itemNumber = new Map<string, number>();
-const firstKey = productMap.keys().next().value ?? "";
-itemNumber.set(firstKey, 3);
-
-const Cart: React.FC = (props) => {
+const Cart: React.FC = () => {
+  const itemNumber = useSelector((state: RootState) => state.cart.cart);
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
       <ul>
-        {Array.from(itemNumber.entries()).map(([pid, quantity]) => {
+        {Object.entries(itemNumber).map(([pid, quantity]) => {
           return <CartItem key={pid} itemId={pid} quantity={quantity} />;
         })}
       </ul>
