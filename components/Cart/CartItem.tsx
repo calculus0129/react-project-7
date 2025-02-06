@@ -1,5 +1,4 @@
 import classes from "./CartItem.module.css";
-import { Product } from "@/ds";
 import { productMap } from "@/db/Products";
 import { useDispatch } from "react-redux";
 import { actions } from "@/store";

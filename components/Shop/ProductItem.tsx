@@ -1,4 +1,3 @@
-import { Product } from "@/ds";
 import Card from "@/components/UI/Card";
 import classes from "./ProductItem.module.css";
 import { productMap } from "@/db/Products";

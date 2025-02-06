@@ -7,6 +7,12 @@ const sampleProducts: Product[] = [
     "This is a first test product - amazing!",
     6,
   ),
+  ProductImpl.create(
+    "Eclipse Serenade",
+    new Date(2022, 11, 29),
+    "My first song I ever made - lyrical!",
+    4,
+  ),
 ];
 
 export const productMap: Map<string, Product> = sampleProducts.reduce(

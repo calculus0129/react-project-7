@@ -1,6 +1,5 @@
 import ProductItem from "./ProductItem";
 import classes from "./Products.module.css";
-import { ProductImpl } from "@/ds";
 import { productMap } from "@/db/Products";
 
 const Products: React.FC = (props) => {
